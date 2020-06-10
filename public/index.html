@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>LoL Champions</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <h1 class="title">LeChamps - LoL Champions REST API</h1>
+    <div id="homepage">
+        <h1>Hire a Champions in your area!</h1>
+        <div id="champions"></div>
+    </div>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+
+    <!-- Create React Component -->
+    <script type="text/babel">
+        var Champions = React.createClass({
+            getInitialState: function () {
+                return ({
+                    champions: []
+                });
+            },
+            render: function () {
+                var champions = this.state.champions;
+                champions = champions.map(function (champion, index) {
+                    return (
+                        <li key={index}>
+                            <span className={champion.availability}></span>
+                            <span className="name">{champion.name}</span>
+                            <span className="rank">{champion.rank}</span>
+                            <span className="dist">{Math.floor(champion.dis / 1000)} km</span>
+                        </li>
+                    );
+                });
+                return (
+                    <div id="champion-container">
+                        <form id="search" onSubmit={this.handleSubmit}>
+                            <label>Enter your Latitude:</label>
+                            <input type="text" ref="lat" placeholder="latitude" required />
+                            <label>Enter your Longitude:</label>
+                            <input type="text" ref="lng" placeholder="longitude" required />
+                            <input type="submit" value="Find Champions" />
+                        </form>
+                        <ul>{champions}</ul>
+                    </div>
+                );
+            },
+            handleSubmit: function (e) {
+                e.preventDefault();
+                var lng = this.refs.lng.value;
+                var lat = this.refs.lat.value;
+
+                fetch('/api/champions?lng=' + lng + '&lat=' + lat).then(function (data) {
+                    return data.json();
+                }).then(json => {
+                    this.setState({
+                        champions: json
+                    });
+                    console.log(json);
+                });
+            }
+        });
+        ReactDOM.render(<Champions />, document.getElementById('champions'));
+    </script>
+
+
+</body>
+
+</html>
