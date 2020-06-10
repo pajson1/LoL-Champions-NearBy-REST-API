@@ -3,7 +3,7 @@ const router = express.Router();
 const Champion = require('../models/champion');
 
 // get a list of champions from the db
-router.get('/champions', function (req, res, next) {
+router.get('/champions', (req, res, next) => {
 
     Champion.aggregate().near({
         near: {
@@ -13,7 +13,7 @@ router.get('/champions', function (req, res, next) {
         maxDistance: 100000,
         spherical: true,
         distanceField: "dis"
-    }).then(function (champions) {
+    }).then(champions => {
         res.send(champions);
     }).catch(next);
 });
