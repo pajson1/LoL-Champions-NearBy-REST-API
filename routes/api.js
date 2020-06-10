@@ -13,32 +13,30 @@ router.get('/champions', (req, res, next) => {
         maxDistance: 100000,
         spherical: true,
         distanceField: "dis"
-    }).then(champions => {
-        res.send(champions);
-    }).catch(next);
+    }).then(champions => res.send(champions)
+    ).catch(next);
 });
 
 // add a new champion to the db
 router.post('/champions', (req, res, next) => {
-    Champion.create(req.body).then(champion => {
-        res.send(champion);
-    }).catch(next);
+    Champion.create(req.body).then(champion => res.send(champion)
+    ).catch(next);
 });
 
 // update a champion in the db
-router.put('/champions/:id', function (req, res, next) {
-    Champion.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function () {
-        Champion.findOne({ _id: req.params.id }).then(function (champion) {
-            res.send(champion);
-        });
+router.put('/champions/:id', (req, res, next) => {
+    Champion.findByIdAndUpdate({ _id: req.params.id }, req.body).then(() => {
+        Champion.findOne({ _id: req.params.id }).then(champion =>
+            res.send(champion)
+        );
     }).catch(next);
 });
 
 // delete a champion from the db
-router.delete('/champions/:id', function (req, res, next) {
-    Champion.findByIdAndRemove({ _id: req.params.id }).then(function (champion) {
-        res.send(champion);
-    }).catch(next);
+router.delete('/champions/:id', (req, res, next) => {
+    Champion.findByIdAndRemove({ _id: req.params.id }).then(champion =>
+        res.send(champion)
+    ).catch(next);
 });
 
 module.exports = router;
