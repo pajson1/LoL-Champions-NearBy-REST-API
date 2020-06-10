@@ -1,18 +1,20 @@
-body{
+body {
     font-family: Raleway;
-    color: #555;
-    background: #ff5252;
+    color: black;
+    background: url('https://wallpaperplay.com/walls/full/f/7/b/93509.jpg');
     margin: 10px 30px;
 }
-#homepage{
+
+#homepage {
     max-width: 800px;
     margin: 60px auto;
     padding: 10px 20px;
     background: #fdfdfd;
     border-radius: 4px;
-    box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
 }
-input[type="text"]{
+
+input[type="text"] {
     display: block;
     width: 300px;
     margin: 20px 0;
@@ -20,38 +22,45 @@ input[type="text"]{
     border-radius: 4px;
     border: 1px solid #ddd;
 }
-label{
+
+label {
     font-weight: bold;
 }
-.title{
+
+.title {
     color: #fff;
     text-align: center;
     font-size: 48px;
 }
-#homepage h1{
+
+#homepage h1 {
     text-align: center;
 }
-form{
+
+form {
     max-width: 350px;
     margin: 30px auto;
 }
-input[type="submit"]{
+
+input[type="submit"] {
     background: #555;
-     color: #fff;
-     border: 0;
-     padding: 10px;
-     font-size: 18px;
-     width: 200px;
-     margin: 0 auto;
-     display: block;
-     cursor: pointer;
-     border-radius: 4px;
- }
-ul{
+    color: #fff;
+    border: 0;
+    padding: 10px;
+    font-size: 18px;
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+ul {
     margin: 0;
     padding: 0;
 }
-li{
+
+li {
     padding: 15px 0;
     background: #eee;
     list-style-type: none;
@@ -60,27 +69,32 @@ li{
     margin: 10px 0;
     border-radius: 4px;
 }
-span{
+
+span {
     display: inline-block;
     margin: 0 20px;
 }
-span.dist{
+
+span.dist {
     color: green;
     float: right;
 }
-span.true{
+
+span.true {
     border-radius: 10px;
     width: 10px;
     height: 10px;
     background: green;
 }
-span.false{
+
+span.false {
     border-radius: 10px;
     width: 10px;
     height: 10px;
     background: #ff5252;
 }
-button{
+
+button {
     float: right;
     background: green;
     border: 0;
@@ -90,4 +104,7 @@ button{
     border-radius: 4px;
     cursor: pointer;
 }
-button.false{display: none;}
+
+button.false {
+    display: none;
+}
