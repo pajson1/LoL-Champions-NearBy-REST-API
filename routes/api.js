@@ -20,7 +20,7 @@ router.get('/champions', function (req, res, next) {
 
 // add a new champion to the db
 router.post('/champions', (req, res, next) => {
-    Champion.create(req.body).then(function (champion) {
+    Champion.create(req.body).then(champion => {
         res.send(champion);
     }).catch(next);
 });
